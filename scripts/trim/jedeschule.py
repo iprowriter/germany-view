@@ -3,6 +3,8 @@
 Removed:
   - personal and contact data: email, phone, fax, director (head teacher's name). germany-view
     describes places, not people, and doesn't need ways to contact a school.
+  - e-mail addresses that some state registers put in the `website` field (a few are named
+    staff addresses); such values are blanked.
   - `raw` (the state's original record as JSON, duplicating the other columns) and `location`
     (the coordinates again, as PostGIS WKB hex).
 Kept: id, name, address, address2, zip, city, website, school_type, legal_status, provider,
@@ -15,6 +17,7 @@ Modified by germany-view as above.
 Usage: python3 -I scripts/trim/jedeschule.py <jedeschule-data-*.csv> <out.csv>
 """
 import csv
+import re
 import sys
 
 csv.field_size_limit(sys.maxsize)
@@ -23,12 +26,22 @@ src, out = sys.argv[1], sys.argv[2]
 KEEP = ["id", "name", "address", "address2", "zip", "city", "website", "school_type",
         "legal_status", "provider", "longitude", "latitude", "state", "update_timestamp"]
 
+EMAIL = re.compile(r"[^\s@/]+@[^\s@/]+\.[a-z]{2,}", re.I)
+
+
+def clean(row: dict) -> dict:
+    if EMAIL.search(row.get("website") or ""):
+        row["website"] = ""
+    return row
+
+
 n = 0
 with open(src, encoding="utf-8", newline="") as f, open(out, "w", encoding="utf-8", newline="") as g:
     r = csv.DictReader(f)
     w = csv.writer(g, lineterminator="\n")
     w.writerow(KEEP)
     for row in r:
+        row = clean(row)
         w.writerow([row.get(c, "") for c in KEEP])
         n += 1
 print(f"{n} schools -> {out}")

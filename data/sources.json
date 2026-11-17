@@ -5,7 +5,7 @@
     "api": "Query `url` as described in `notes`.",
     "script": "Run `trimScript`."
   },
-  "totalBytes": 315450063,
+  "totalBytes": 312122746,
   "datasets": [
     {
       "id": "boundaries.vg1000",
@@ -359,15 +359,15 @@
       "page": "https://www.bundesnetzagentur.de/ladeinfrastruktur",
       "trimmed": true,
       "trimScript": "scripts/trim/ladesaeulen.py",
-      "notes": "Source 58 MB. Removed EVSE IDs and public keys, street addresses and opening-hour details; converted to UTF-8. The URL is date-stamped and goes stale: `page` links the current file.",
+      "notes": "Source 58 MB. Removed EVSE IDs and public keys, street addresses, opening-hour details and the operator name (many operators are sole traders trading under their own name: personal data); converted to UTF-8. The URL is date-stamped and goes stale: `page` links the current file.",
       "dir": "data/raw",
       "fetchedAt": "2026-11-17",
-      "bytes": 31240079,
+      "bytes": 28225023,
       "files": [
         {
           "file": "energy/ladesaeulenregister_2026-11-12.csv",
-          "bytes": 31240079,
-          "sha256": "32dbd893913a330235ee6aab8c7f2cf1b59322afe9bc0e9022543b209744a433"
+          "bytes": 28225023,
+          "sha256": "c818f5a46b404827c8ca0018f7abf67ff783a6dcea75f2ad9e104eb9a74a7fec"
         }
       ]
     },
@@ -698,15 +698,15 @@
       "page": "https://jedeschule.codefor.de/",
       "trimmed": true,
       "trimScript": "scripts/trim/jedeschule.py",
-      "notes": "Source 50 MB, ~40,000 schools. Removed email, phone, fax and head teacher names (personal/contact data), plus the duplicate raw JSON and WKB columns. Weekly dumps; latest.csv is the newest.",
+      "notes": "Source 50 MB, ~40,000 schools. Removed email, phone, fax and head teacher names (personal/contact data), blanked e-mail addresses that some registers put in the website field, and dropped the duplicate raw JSON and WKB columns. Weekly dumps; latest.csv is the newest.",
       "dir": "data/raw",
       "fetchedAt": "2026-11-17",
-      "bytes": 8804802,
+      "bytes": 8803533,
       "files": [
         {
           "file": "education/jedeschule_2026-11-14.csv",
-          "bytes": 8804802,
-          "sha256": "1c899aad7b8f9408f54bb0a8dffd1945eb1dd81020eb9542fa7b32f6761523e4"
+          "bytes": 8803533,
+          "sha256": "e82ec62bc88c0fe750049a7e3d2f49d8339f17b92ad8555ae231544128ba46be"
         }
       ]
     },
@@ -720,16 +720,17 @@
       "method": "http",
       "url": "https://www.statistikportal.de/sites/default/files/2026-06/krankenhausverzeichnis_24.xlsx",
       "page": "https://www.statistikportal.de/de/veroeffentlichungen/krankenhausverzeichnis",
-      "trimmed": false,
-      "notes": "2,836 hospital sites (sheet ' KHV_2024', note the leading space) and 1,094 rehab clinics (RHV_2024) with address, district/municipality key, operator type and facility type. No coordinates. Contact columns are institutional; drop them in the build if not needed.",
+      "trimmed": true,
+      "trimScript": "scripts/trim/krankenhausverzeichnis.py",
+      "notes": "2,836 hospital sites (sheet ' KHV_2024', note the leading space) and 1,094 rehab clinics (RHV_2024) with address, district/municipality key, operator type and facility type. No coordinates. Removed the E_Mail column and blanked e-mail addresses in the Internet column (many are named staff addresses: personal data).",
       "dir": "data/raw",
       "fetchedAt": "2026-11-17",
-      "bytes": 2496943,
+      "bytes": 2185951,
       "files": [
         {
           "file": "health/krankenhausverzeichnis_2024.xlsx",
-          "bytes": 2496943,
-          "sha256": "d2547942e9466b1b38e028309224863ff983ff7ebc5f76bba44fd97260ca6ec6"
+          "bytes": 2185951,
+          "sha256": "7e3f9df93ab3da431a43a924515833d96c258d285586755e86f50163893936b7"
         }
       ]
     },

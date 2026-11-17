@@ -88,8 +88,9 @@ DATASETS = [
          licenseVerified=True, method="http",
          url="https://data.bundesnetzagentur.de/Bundesnetzagentur/DE/Fachthemen/ElektrizitaetundGas/E-Mobilitaet/Ladesaeulenregister_BNetzA_2026-11-12.csv",
          page="https://www.bundesnetzagentur.de/ladeinfrastruktur", trimmed=True, trimScript="scripts/trim/ladesaeulen.py",
-         notes="Source 58 MB. Removed EVSE IDs and public keys, street addresses and opening-hour details; converted to "
-         "UTF-8. The URL is date-stamped and goes stale: `page` links the current file."),
+         notes="Source 58 MB. Removed EVSE IDs and public keys, street addresses, opening-hour details and the operator "
+         "name (many operators are sole traders trading under their own name: personal data); converted to UTF-8. "
+         "The URL is date-stamped and goes stale: `page` links the current file."),
 
     # ---- Environment --------------------------------------------------------------------
     dict(id="environment.uba_air", category="environment", title="Air quality: stations and annual values (PM10, PM2.5, NO2, O3), 2016-2025",
@@ -118,17 +119,19 @@ DATASETS = [
          url="https://jedeschule.codefor.de/csv-data/jedeschule-data-2026-11-14.csv", page="https://jedeschule.codefor.de/",
          trimmed=True, trimScript="scripts/trim/jedeschule.py",
          notes="Source 50 MB, ~40,000 schools. Removed email, phone, fax and head teacher names (personal/contact data), "
-         "plus the duplicate raw JSON and WKB columns. Weekly dumps; latest.csv is the newest."),
+         "blanked e-mail addresses that some registers put in the website field, and dropped the duplicate raw JSON "
+         "and WKB columns. Weekly dumps; latest.csv is the newest."),
 
     # ---- Health -------------------------------------------------------------------------
     dict(id="health.krankenhausverzeichnis", category="health", title="Directory of hospitals and rehabilitation clinics 2024",
          files=["health/krankenhausverzeichnis_2024.xlsx"], publisher="Statistische Ämter des Bundes und der Länder",
          license="dl-de/by-2-0", licenseVerified=False, method="http",
          url="https://www.statistikportal.de/sites/default/files/2026-06/krankenhausverzeichnis_24.xlsx",
-         page="https://www.statistikportal.de/de/veroeffentlichungen/krankenhausverzeichnis", trimmed=False,
+         page="https://www.statistikportal.de/de/veroeffentlichungen/krankenhausverzeichnis",
+         trimmed=True, trimScript="scripts/trim/krankenhausverzeichnis.py",
          notes="2,836 hospital sites (sheet ' KHV_2024', note the leading space) and 1,094 rehab clinics (RHV_2024) with "
-         "address, district/municipality key, operator type and facility type. No coordinates. Contact columns are "
-         "institutional; drop them in the build if not needed."),
+         "address, district/municipality key, operator type and facility type. No coordinates. Removed the E_Mail "
+         "column and blanked e-mail addresses in the Internet column (many are named staff addresses: personal data)."),
 
     # ---- Transport ----------------------------------------------------------------------
     dict(id="transport.unfallatlas_2025", category="transport", title="Road accidents with personal injury 2025 (Unfallatlas)",

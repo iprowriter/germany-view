@@ -1,8 +1,9 @@
 """Trims the Bundesnetzagentur Ladesäulenregister CSV (~58 MB) to the columns germany-view uses.
 
 Removed: the 10-line preamble, the per-plug EVSE IDs and public keys (most of the file's size),
-address details below postcode level, and opening-hours detail strings. Kept: one row per
-charging site with operator, status, type, number of points, power, commissioning date,
+address details below postcode level, opening-hours detail strings, and the operator name
+(`Betreiber`): many operators are sole traders trading under their own name, which is personal
+data, and germany-view compares places, not operators. Kept: one row per charging site with status, type, number of points, power, commissioning date,
 postcode, place, district, state, coordinates, payment systems, and plug type + power per point.
 
 Output is UTF-8 (the source is ISO-8859-1), semicolon separated, decimal comma, as published.
@@ -17,7 +18,7 @@ import sys
 src, out = sys.argv[1], sys.argv[2]
 
 KEEP = [
-    "Ladeeinrichtungs-ID", "Betreiber", "Status", "Art der Ladeeinrichtung", "Anzahl Ladepunkte",
+    "Ladeeinrichtungs-ID", "Status", "Art der Ladeeinrichtung", "Anzahl Ladepunkte",
     "Nennleistung Ladeeinrichtung [kW]", "Inbetriebnahmedatum", "Postleitzahl", "Ort",
     "Kreis/kreisfreie Stadt", "Bundesland", "Breitengrad", "Längengrad", "Bezahlsysteme",
 ]
