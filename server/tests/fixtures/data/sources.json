@@ -1,0 +1,8 @@
+{
+  "description": "Test fixture",
+  "totalBytes": 3000,
+  "datasets": [
+    {"id": "inkar.2025", "dir": "data/raw", "category": "multiple", "title": "INKAR 2025", "publisher": "BBSR", "license": "dl-de/by-2-0", "licenseVerified": true, "trimmed": true, "fetchedAt": "2026-11-17", "bytes": 2000, "url": "https://example.org/inkar.zip", "files": [{"file": "inkar/a.csv", "bytes": 1000, "sha256": "x"}, {"file": "inkar/b.csv", "bytes": 1000, "sha256": "y"}]},
+    {"id": "health.krankenhausverzeichnis", "dir": "data/raw", "category": "health", "title": "Hospitals", "publisher": "Statistische Ämter", "license": "dl-de/by-2-0", "licenseVerified": false, "trimmed": false, "fetchedAt": "2026-11-17", "bytes": 1000, "page": "https://example.org/khv", "files": [{"file": "health/khv.xlsx", "bytes": 1000, "sha256": "z"}]}
+  ]
+}

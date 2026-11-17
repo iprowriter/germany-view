@@ -62,6 +62,20 @@ http://localhost:5002, so it can run beside Berlin Visualized (5001).
 | `npm run map:download` | Download the offline basemap into `data/map/` |
 | `npm run data:manifest` | Regenerate `data/sources.json` after downloading data |
 
+## API
+
+Everything is read from files in `data/` (no database), so the API works offline. Endpoints that need
+`data/raw/` answer `503` with a hint when it hasn't been downloaded; bad parameters get `400`.
+
+| Endpoint | Returns | Parameters |
+| --- | --- | --- |
+| `GET /api` | Health check | |
+| `GET /api/regions` | Germany, the 16 states and 400 districts: official key (AGS), name, level, parent, East/West | `level=country\|state\|district`, `parent=DE` or a state key (`09`) |
+| `GET /api/indicators` | The 561 INKAR indicators: id, code, name, group | `q=` search (case- and umlaut-insensitive, all words must match), `area=LRB\|ZOM\|SDG` |
+| `GET /api/sources` | Every dataset: publisher, licence, size, trimmed or not, source URL | `category=health` (any category slug) |
+
+Set `DATA_DIR` in `server/.env` to read the data from somewhere else.
+
 ## Layout
 
 ```
@@ -71,7 +85,9 @@ src/
   views/PagePreview.tsx     what a page shows until it's built
   useHashRoute.ts           current page in the URL hash (#/health), no router library
 server/
-  app.ts                    Express API (health check for now)
+  app.ts                    Express API: createApp(), error handling (400, 503 for missing data)
+  routes/catalog.ts         /api/regions, /api/indicators, /api/sources
+  data/                     file loaders (read once, cached until the file changes)
 scripts/
   trim/                     trimming scripts for large downloads
   map/                      offline basemap download
