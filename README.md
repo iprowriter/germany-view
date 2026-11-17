@@ -97,5 +97,4 @@ scripts/
 ## Status
 
 - Data and offline map collected: **105 MB zipped** of the 200 MB budget. See [`data/README.md`](data/README.md).
-- App skeleton: sidebar with all pages; every page shows a preview of what it will contain and which
-  datasets feed it. No database and no data views yet.
+
