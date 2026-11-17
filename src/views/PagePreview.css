@@ -1,0 +1,162 @@
+.preview {
+  max-width: 880px;
+}
+
+.preview__header {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.preview__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  margin-top: 2px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--red);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+}
+
+.preview__eyebrow {
+  margin: 0 0 2px;
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold-strong);
+}
+
+.preview h1 {
+  margin: 0;
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+.preview__description {
+  margin: 8px 0 0;
+  max-width: 60ch;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+
+.preview__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 26px 0 0;
+  padding: 5px 12px 5px 10px;
+  border-radius: 999px;
+  background: var(--gold-wash);
+  color: var(--gold-strong);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.preview__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.preview__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.preview__card {
+  padding: 18px 20px 20px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+}
+
+.preview__card h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-muted);
+}
+
+.preview__card h2 svg {
+  color: var(--red);
+}
+
+.preview__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  color: var(--ink);
+  font-size: 0.93rem;
+}
+
+.preview__list li {
+  position: relative;
+  padding-left: 18px;
+  line-height: 1.45;
+}
+
+/* Small gold square instead of a round bullet. */
+.preview__list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 1.5px;
+  background: var(--gold);
+}
+
+.preview__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preview__sources code {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--stone);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+}
+
+@media (max-width: 760px) {
+  .preview__header {
+    gap: 14px;
+  }
+
+  .preview__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .preview h1 {
+    font-size: 1.5rem;
+  }
+}

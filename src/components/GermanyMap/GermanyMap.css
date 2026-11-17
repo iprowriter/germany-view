@@ -1,0 +1,64 @@
+.germanyMap {
+  position: relative;
+  margin: 0;
+}
+
+.germanyMap svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* A soft offset copy of the outline under the states: lifts the map off the card. */
+.germanyMap__shadow {
+  fill: var(--stone-deep);
+  transform: translate(4px, 6px);
+}
+
+.germanyMap__state {
+  fill: var(--stone);
+  stroke: var(--surface);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: fill 140ms ease;
+}
+
+.germanyMap__state--hover {
+  fill: var(--red-wash);
+}
+
+/* Fine diagonal hatching over the whole country: reads as "no data yet". */
+.germanyMap__hatchLayer {
+  fill: url(#germanyMap-hatch);
+  pointer-events: none;
+}
+
+.germanyMap__hatch {
+  stroke: var(--line-strong);
+  stroke-width: 0.6;
+  opacity: 0.55;
+}
+
+.germanyMap__border {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/* Top left sits over the North Sea, where it never covers a state. */
+.germanyMap__caption {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line);
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 500;
+}

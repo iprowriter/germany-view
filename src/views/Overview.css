@@ -1,0 +1,610 @@
+.overview {
+  max-width: 1240px;
+}
+
+/* ---- Header -------------------------------------------------------------------------- */
+
+.overview__eyebrow {
+  margin: 0 0 2px;
+  font-size: 0.7rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold-strong);
+}
+
+.overview h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.028em;
+}
+
+.overview__lead {
+  margin: 8px 0 0;
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: 1.04rem;
+}
+
+.overview__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.overview__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+}
+
+.overview__facts strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.overview__facts .overview__offline {
+  background: var(--gold-wash);
+  box-shadow: none;
+  color: var(--gold-strong);
+  font-weight: 500;
+}
+
+/* ---- Shared ---------------------------------------------------------------------------- */
+
+.ovPanel {
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+}
+
+.ovPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--gold-wash);
+  color: var(--gold-strong);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ovPill--muted {
+  background: var(--stone);
+  color: var(--ink-muted);
+}
+
+/* Grey bars standing in for values that aren't loaded yet. */
+.skeleton {
+  display: inline-block;
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--stone) 0%, var(--stone-deep) 50%, var(--stone) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
+}
+
+.skeleton--big {
+  height: 22px;
+  border-radius: 6px;
+}
+
+.skeleton--value {
+  flex-shrink: 0;
+}
+
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+/* ---- Hero: map + ranking -------------------------------------------------------------- */
+
+.ovHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.ovHero__map {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px 18px;
+  /* A faint dot grid behind the map, like survey paper. */
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-color: var(--surface);
+}
+
+.ovToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ovSelect {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px 7px 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: not-allowed;
+}
+
+.ovSelect__label {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+}
+
+.ovSelect__value {
+  font-weight: 600;
+}
+
+.ovSelect svg {
+  color: var(--ink-muted);
+}
+
+.ovSegmented {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 9px;
+  background: var(--stone);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.ovSegmented__item {
+  padding: 5px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: not-allowed;
+}
+
+.ovSegmented__item--active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.ovHero__germany {
+  width: min(100%, 400px);
+  aspect-ratio: 600 / 810;
+  margin: 18px auto 8px;
+}
+
+.ovLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: min(100%, 260px);
+  margin: 6px auto 0;
+}
+
+.ovLegend__bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f6ece9, #e3b8b0, #c4766b, var(--red), var(--red-strong));
+  opacity: 0.55;
+}
+
+.ovLegend__labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+}
+
+.ovHero__side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ovPanel__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-muted);
+}
+
+.ovRanking {
+  padding: 16px 18px;
+}
+
+.ovRanking ol {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ovRanking li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ovRanking .skeleton:not(.skeleton--value) {
+  flex: 0 1 auto;
+}
+
+.ovRanking .skeleton--value {
+  margin-left: auto;
+}
+
+.ovRanking__rank {
+  width: 26px;
+  flex-shrink: 0;
+  color: var(--ink-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ovSelected {
+  padding: 16px 18px;
+  background: var(--stone);
+  box-shadow: inset 0 0 0 1px var(--line);
+  border: 1px dashed var(--line-strong);
+}
+
+.ovSelected__title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.ovSelected__text {
+  margin: 4px 0 0;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+
+/* ---- Sections ------------------------------------------------------------------------ */
+
+.ovSection {
+  margin-top: 40px;
+}
+
+.ovSection__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ovSection__header h2 {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.ovSection__note {
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+}
+
+.ovGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.ovGrid--journeys {
+  grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+}
+
+.ovGrid--themes {
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+}
+
+.ovGrid--bottom {
+  grid-template-columns: minmax(0, 1.6fr) minmax(min(280px, 100%), 1fr);
+}
+
+/* ---- Cards ----------------------------------------------------------------------------- */
+
+.ovCard {
+  position: relative;
+  display: flex;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.ovCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(31, 33, 36, 0.05), 0 10px 24px rgba(31, 33, 36, 0.08), inset 0 0 0 1px var(--line-strong);
+}
+
+.ovCard:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.ovCard__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--red-wash);
+  color: var(--red);
+}
+
+.ovCard__icon--small {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+}
+
+.ovCard__title {
+  font-weight: 650;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.ovCard__text {
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.ovCard__arrow {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: var(--line-strong);
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.ovCard:hover .ovCard__arrow {
+  color: var(--red);
+  transform: translate(2px, -2px);
+}
+
+/* Explore & decide: icon on top, so the text gets the card's full width. */
+.ovJourney {
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+}
+
+.ovJourney .ovCard__arrow {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.ovJourney .ovCard__body {
+  flex: 1;
+}
+
+.ovJourney .ovCard__figure {
+  margin-top: auto;
+  padding-top: 3px;
+}
+
+.ovJourney .ovCard__text {
+  margin-bottom: 10px;
+}
+
+.ovCard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ovCard__figure {
+  margin-top: 8px;
+  align-self: flex-start;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--stone);
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Themes */
+.ovTheme {
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 16px 14px;
+}
+
+.ovTheme__top {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.ovTheme__figure {
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+}
+
+.ovTheme__value {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 34px;
+}
+
+.ovTheme__trend {
+  width: 44%;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.ovTheme__trend path {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 3 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.ovTheme:hover .ovTheme__trend path {
+  stroke: var(--gold);
+}
+
+/* Pinned to the bottom, so footers line up across a row even when a title wraps. */
+.ovTheme__footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-muted);
+  font-size: 0.75rem;
+}
+
+/* Live now */
+.ovLive,
+.ovSources {
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+}
+
+.ovLive__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ovLive__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 4px var(--red-wash);
+}
+
+.ovLive__tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
+  gap: 10px;
+}
+
+.ovLive__tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: var(--stone);
+  color: var(--ink-muted);
+}
+
+.ovLive__label {
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.ovLive__tile .skeleton {
+  background: linear-gradient(90deg, var(--stone-deep) 0%, var(--line-strong) 50%, var(--stone-deep) 100%);
+  background-size: 200% 100%;
+}
+
+/* Sources */
+.ovSources__stats {
+  display: flex;
+  gap: 24px;
+}
+
+.ovSources__stats span {
+  display: flex;
+  flex-direction: column;
+}
+
+.ovSources__stats strong {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.ovSources__stats small {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+}
+
+/* ---- Narrow screens -------------------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .ovHero {
+    grid-template-columns: 1fr;
+  }
+
+  .ovHero__side {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  }
+
+  .ovGrid--bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .overview h1 {
+    font-size: 1.6rem;
+  }
+}

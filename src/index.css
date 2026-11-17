@@ -1,0 +1,80 @@
+/*
+ * Design tokens. A muted take on Schwarz-Rot-Gold: warm paper and stone instead of white and grey,
+ * anthracite instead of black, a deep brick red as the accent and a soft ochre for highlights.
+ * The raw flag colours appear only once, as a thin rule (see .tricolor).
+ */
+:root {
+  --sidebar-width: 268px;
+  --radius: 10px;
+  --radius-sm: 7px;
+
+  /* Surfaces */
+  --paper: #faf9f6;          /* page background */
+  --surface: #ffffff;        /* cards */
+  --stone: #f2f0eb;          /* sidebar */
+  --stone-deep: #e9e5dd;     /* hover on stone */
+
+  /* Text */
+  --ink: #1f2124;            /* anthracite */
+  --ink-soft: #4a4c50;
+  --ink-muted: #75716a;      /* warm grey */
+
+  /* Lines */
+  --line: #e4e0d7;
+  --line-strong: #d6d0c4;
+
+  /* Accent: brick red */
+  --red: #9b2f2a;
+  --red-strong: #7e2420;
+  --red-wash: #f5e9e6;
+
+  /* Highlight: ochre gold */
+  --gold: #c4942f;
+  --gold-strong: #8a6516;
+  --gold-wash: #f6eedb;
+
+  /* Flag colours, for the tricolour rule only */
+  --flag-black: #1f2124;
+  --flag-red: #b8332c;
+  --flag-gold: #d9a521;
+
+  --shadow-sm: 0 1px 2px rgba(31, 33, 36, 0.05);
+  --shadow: 0 1px 2px rgba(31, 33, 36, 0.04), 0 4px 14px rgba(31, 33, 36, 0.05);
+
+  color-scheme: light;
+  font-family: "Inter", "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+}
+
+::selection {
+  background: var(--gold-wash);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* Black, red, gold as one thin rule: the single literal flag reference in the UI. */
+.tricolor {
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--flag-black) 0 33.33%, var(--flag-red) 33.33% 66.66%, var(--flag-gold) 66.66%);
+}

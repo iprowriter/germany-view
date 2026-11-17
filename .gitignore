@@ -1,0 +1,17 @@
+node_modules
+dist
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+
+# Raw third-party datasets: not ours to redistribute, and too large for git.
+# data/sources.json records where each file came from (see data/README.md).
+data/raw/
+
+# Offline basemap (large binary, rebuildable).
+data/map/
+
+# Built database (derived from data/raw, rebuildable).
+data/db/
